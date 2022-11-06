@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
+    impermanence.url = "github:nix-community/impermanence";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,8 +42,15 @@
           modules = [ ./system/hosts/nixbox ];
         };
 
+        # Latitude E5540
+        latino = nixpkgs.lib.nixosSystem {
+          pkgs = legacyPackages."x86_64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./system/hosts/latino ];
+        };
+
         # Netbook
-        sam = nixpkgs.lib.nixosSystem {
+        samba = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [ ./system/hosts/sam ];
@@ -54,14 +62,27 @@
       ########################################################################
       homeConfigurations = {
         # Nixbox
-        "vagrant@nixbox" = home-manager.lib.homeManagerConfiguration {
+        "vagrant_on_nixbox" = home-manager.lib.homeManagerConfiguration {
           pkgs = legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/vagrant.nix ];
         };
 
+        "badele_on_latino" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/badele.nix ];
+        };
+
+        "root_on_latino" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/root.nix ];
+        };
+
+
         # Netbook
-        # "badele@sam" = home-manager.lib.homeManagerConfiguration {
+        # "badele_on_sam" = home-manager.lib.homeManagerConfiguration {
         #   pkgs = legacyPackages."x86_64-linux";
         #   extraSpecialArgs = { inherit inputs outputs; };
         #   modules = [ ./home/badele.nix ];

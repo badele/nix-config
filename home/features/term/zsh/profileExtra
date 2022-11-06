@@ -1,0 +1,74 @@
+setopt no_beep				                                      # no beep
+setopt rm_star_wait                 	                          # wait 10 seconds before running `rm *`
+setopt hist_ignore_dups             	                          # ignore history duplication
+setopt hist_expire_dups_first       	                          # remove oldest duplicate commands from the history first
+setopt hist_ignore_space            	                          # don't save commands beginning with spaces to history
+setopt append_history               	                          # append to the end of the history file
+setopt inc_append_history           	                          # always be saving history (not just when the shell exits)
+setopt no_flowcontrol	            	                          # Disable ^S and ^Q (freeze & resume flowcontro)
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
+zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+
+# Speed up completions
+mkdir -p "$(dirname ~/.cache/zsh/completion-cache)"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "~/.cache/zsh/completion-cache"
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' menu select
+
+##############################################################################
+# keys binding
+##############################################################################
+
+# FZF & Z
+bindkey "^R" 		fzf-history-widget ## [CTRL-R] Show FZF histories
+bindkey "^T" 		fzf-file-widget ## [CTRL-T] Show FZF files
+bindkey "^F" 		fzf-cd-widget ## [CTRL-F] Goto FZF selected folder
+bindkey "^J"        fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
+bindkey "^G"        _navi_widget ## [CTRL-G] Show local navi
+
+function fzf-zoxide() {
+  eval "ji"
+  zle accept-line
+}
+zle -N fzf-zoxide
+
+function _calc_latency() {
+    FIBER_SPEED=200000000
+
+    if [ -z $1 ]; then
+        echo "Usage: $0 <Distance Km>"
+        return 1
+    fi
+
+    RESULT=$(eva "${1}*1000/${FIBER_SPEED}*1000*2") # Meters * lightspeed * 1000 ms * 2 (round trip)
+    echo "$RESULT ms"
+}
+
+function _update_nix_index() {
+    filename="index-$(uname -m)-$(uname | tr A-Z a-z)"
+    mkdir -p ~/.cache/nix-index && cd ~/.cache/nix-index
+    # -N will only download a new version if there is an update.
+    wget -q -N https://github.com/Mic92/nix-index-database/releases/latest/download/$filename
+    ln -f $filename files    
+}
+
+##############################################################################
+# broot
+##############################################################################
+
+# Wallpapers selector
+function brw () {
+ br -c ":gw"
+}
+
+# Filter
+function brf () {
+    br -h -c "/$1"
+}
+
+# Load some files if exists
+test -d "~/.kube" && export KUBECONFIG=$(ls -1 ~/.kube/*.yml | tr " " ":") # Kubernetes contexts
+test -f ~/.nix-profile/etc/grc.zsh  && source ~/.nix-profile/etc/grc.zsh
