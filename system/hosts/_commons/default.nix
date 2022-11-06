@@ -9,5 +9,6 @@
     ./nix.nix
     ./openssh.nix
     ./network.nix
+    ./TODO.nix
   ];
 }

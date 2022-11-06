@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:badele/fork-nixos-hardware/dell-e5540";
     impermanence.url = "github:nix-community/impermanence";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,12 +35,12 @@
       # System
       ########################################################################
       nixosConfigurations = rec {
-        # Nixbox
-        nixbox = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./system/hosts/nixbox ];
-        };
+        # # Nixbox
+        # nixbox = nixpkgs.lib.nixosSystem {
+        #   pkgs = legacyPackages."x86_64-linux";
+        #   specialArgs = { inherit inputs outputs; };
+        #   modules = [ ./system/hosts/nixbox ];
+        # };
 
         # Latitude E5540
         latino = nixpkgs.lib.nixosSystem {
@@ -50,11 +50,11 @@
         };
 
         # Netbook
-        samba = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./system/hosts/sam ];
-        };
+        # samba = nixpkgs.lib.nixosSystem {
+        #   pkgs = legacyPackages."x86_64-linux";
+        #   specialArgs = { inherit inputs outputs; };
+        #   modules = [ ./system/hosts/sam ];
+        # };
       };
 
       ########################################################################

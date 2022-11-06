@@ -2,11 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [
+      inputs.hardware.nixosModules.dell-latitude-5520
+
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../_commons

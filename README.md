@@ -2,10 +2,15 @@
 
 ## TODO 
 - [ ] Sops
-- [ ] Configure visual studio code
+- [ ] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget'
+- [x] nix-index-database
+- [x] Configure visual studio code
   - [x] Install treetodo
   - [x] Install run on save
-  - [ ] Install task runner
+  - [x] Install task explorer
+- [ ] Hardwares
+  - [ ] Dell E5540
+    - [ ] push to nixos-hardware
 - [ ] install hyperland
 
 ## Second install
