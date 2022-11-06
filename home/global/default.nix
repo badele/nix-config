@@ -1,10 +1,9 @@
-{ 
-inputs
+{ inputs
 , lib
 , pkgs
 , config
 , outputs
-, ... 
+, ...
 }:
 
 {

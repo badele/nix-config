@@ -66,7 +66,7 @@ function brw () {
 
 # Filter
 function brf () {
-    br -h -c "/$1"
+ br -h -c "/$1"
 }
 
 # Load some files if exists

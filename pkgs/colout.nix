@@ -17,7 +17,7 @@ buildPythonPackage rec {
     sha256 = "fa689ba585f5a7dc0630ab8bf85fba7c7985e741d0c82cbeeedd7633ecba63de";
   };
 
-  propagatedBuildInputs = [ babel pygments];
+  propagatedBuildInputs = [ babel pygments ];
 
   pythonImportsCheck = [ "colout" ];
 

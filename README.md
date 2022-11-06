@@ -1,5 +1,13 @@
 # nix-config
 
+## TODO 
+- [ ] Sops
+- [ ] Configure visual studio code
+  - [x] Install treetodo
+  - [x] Install run on save
+  - [ ] Install task runner
+- [ ] install hyperland
+
 ## Second install
 ```
 git clone && cd nix-config

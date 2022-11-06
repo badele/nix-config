@@ -1,15 +1,14 @@
-{ 
-config
+{ config
 , inputs
 , pkgs
 , lib
-, ... 
-}: 
-{ 
-    imports = [ 
-      ./global 
-      ./features/term 
-    ]; 
+, ...
+}:
+{
+  imports = [
+    ./global
+    ./features/term
+  ];
 
   home = {
     username = lib.mkDefault "root";

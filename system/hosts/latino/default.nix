@@ -6,13 +6,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-    ../_commons
+      ../_commons
 
-    # Users
-    ../_users/root.nix
-    ../_users/badele.nix
+      # Users
+      ../_users/root.nix
+      ../_users/badele.nix
     ];
 
   nixpkgs.config.unfree = true;

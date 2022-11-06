@@ -6,30 +6,29 @@
 #    ██║   ███████╗██║  ██║██║ ╚═╝ ██║
 #    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
 
-{ 
-config
+{ config
 , pkgs
-, ... 
+, ...
 }: {
 
   imports = [
-  ./shell-aliases.nix
-  ./shell-variables.nix
-  ./broot.nix
-  ./starship.nix
-  ./user-scripts 
-  ./zsh
+    ./shell-aliases.nix
+    ./shell-variables.nix
+    ./broot.nix
+    ./starship.nix
+    ./user-scripts
+    ./zsh
   ];
 
   # NOTE: By default all programs enabled for the all shells
-    programs = {  
+  programs = {
     nix-index = {
       enable = true;
     };
 
     zoxide = {
       enable = true; # Autojump [CTRL-J]
-      options = [ "--cmd j"];
+      options = [ "--cmd j" ];
     };
 
     fzf = {
@@ -43,11 +42,11 @@ config
       enable = true;
       settings = {
         cheats = {
-        paths = [
-          "~/ghq/github.com/badele/cheats"
-        ];
+          paths = [
+            "~/ghq/github.com/badele/cheats"
+          ];
+        };
       };
-    };
     };
   };
 
@@ -79,7 +78,7 @@ config
     exa # ls alternative
     fd # find alternative
     httpie # curl alternative
-#    procs # top alternative
+    #    procs # top alternative
     bottom # System viewer
     ripgrep # Better grep
     jq # JSON pretty printer and manipulator

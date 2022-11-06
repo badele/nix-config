@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"emeraldwalk.runonsave": {
+
+			"commands": [
+				{
+					"match": "\\.nix$",
+					"cmd": "nix-shell -p nixpkgs-fmt --run 'FILE=${file} make fmt-file'"
+				}
+			]
+		},
+		"todo-tree.tree.showBadges": true,
+		"todo-tree.tree.showCountsInTree": true,
+		"todo-tree.general.tags": [
+			"BUG",
+			"HACK",
+			"FIXME",
+			"TODO",
+			"[ ]",
+			"[x]"
+		],
+		"todo-tree.highlights.customHighlight": {
+			"[ ]": {
+				"background": "#ff000080"
+			},
+			"[x]": {
+				"background": "#00ff0080"
+			}
+		},
+		"todo-tree.tree.disableCompactFolders": true,
+		"taskExplorer.enableRuby": false,
+		"taskExplorer.enableBash": false,
+		"taskExplorer.pathToMake": "make"
+	},
+	"extensions": {
+		"recommendations": [
+			"aaron-bond.better-comments",
+			"gruntfuggly.todo-tree",
+			"emeraldwalk.runonsave",
+			"eamodio.gitlens",
+			"spmeesseman.vscode-taskexplorer"
+		]
+	}
+}

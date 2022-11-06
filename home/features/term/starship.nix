@@ -21,7 +21,7 @@
         error_symbol = "[❌](bold red)";
       };
 
-    format = ''$shlvl$username$hostname[](bg:#DA627D fg:#9A348E)$directory[](fg:#DA627D bg:#FCA17D)$git_branch$git_status[](fg:#FCA17D bg:#86BBD8)$c$golang[](fg:#86BBD8 bg:#06969A)$docker_context$vagrant[](fg:#06969A bg:#33658A)$cmd_duration[ ](fg:#33658A)'';
+      format = ''$shlvl$username$hostname[](bg:#DA627D fg:#9A348E)$directory[](fg:#DA627D bg:#FCA17D)$git_branch$git_status[](fg:#FCA17D bg:#86BBD8)$c$golang[](fg:#86BBD8 bg:#06969A)$docker_context$vagrant[](fg:#06969A bg:#33658A)$cmd_duration[ ](fg:#33658A)'';
       fill = {
         symbol = " ";
         disabled = false;
@@ -49,49 +49,49 @@
       };
 
 
-    directory = {
-    style = "bg:#DA627D";
-    format = "[ $path ]($style)";
-    # truncation_length = 3;
-    # truncation_symbol = "…/";
+      directory = {
+        style = "bg:#DA627D";
+        format = "[ $path ]($style)";
+        # truncation_length = 3;
+        # truncation_symbol = "…/";
 
-    substitutions = {
-        "Documents" = " ";
-        "Downloads" = " ";
-        "Music" = " ";
-        "Pictures" = " ";
-    };
-
-       };
-
-git_branch = {
-    symbol = "";
-    style = "bg:#FCA17D";
-    format = "[ $symbol $branch ]($style)";
-};
-
-    git_status = {
-    style = "bg:#FCA17D";
-    format = "[$all_status$ahead_behind ]($style)";
-    };
-
-golang = {
-    symbol = " ";
-    style = "bg:#86BBD8";
-    format = "[ $symbol ($version) ]($style)";
-};
-
-docker_context = {
-    symbol = " ";
-    style = "bg:#06969A";
-    format = "[ $symbol $context ]($style) $path";
-};
-
-        vagrant = {
-            symbol = " ";
-            style = "bg:#06969A";
-            format = "[ $symbol  $version ]($style)";
+        substitutions = {
+          "Documents" = " ";
+          "Downloads" = " ";
+          "Music" = " ";
+          "Pictures" = " ";
         };
+
+      };
+
+      git_branch = {
+        symbol = "";
+        style = "bg:#FCA17D";
+        format = "[ $symbol $branch ]($style)";
+      };
+
+      git_status = {
+        style = "bg:#FCA17D";
+        format = "[$all_status$ahead_behind ]($style)";
+      };
+
+      golang = {
+        symbol = " ";
+        style = "bg:#86BBD8";
+        format = "[ $symbol ($version) ]($style)";
+      };
+
+      docker_context = {
+        symbol = " ";
+        style = "bg:#06969A";
+        format = "[ $symbol $context ]($style) $path";
+      };
+
+      vagrant = {
+        symbol = " ";
+        style = "bg:#06969A";
+        format = "[ $symbol  $version ]($style)";
+      };
 
       time = {
         disabled = false;

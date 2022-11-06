@@ -22,7 +22,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ 
-    git 
+  environment.systemPackages = with pkgs; [
+    git
   ];
 }

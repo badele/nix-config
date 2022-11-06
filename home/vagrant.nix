@@ -1,12 +1,11 @@
-{ 
-inputs
+{ inputs
 , pkgs
-, ... 
-}: 
-{ 
-    imports = [ ./global ./features/term ]; 
+, ...
+}:
+{
+  imports = [ ./global ./features/term ];
 
-    programs.git = {
+  programs.git = {
     enable = true;
     userName = "Bruno Adelé";
     userEmail = "brunoadele@gmail.com";
@@ -15,10 +14,11 @@ inputs
       signByDefault = true;
     };
     extraConfig = {
-        core.pager="delta";
-        interactive.difffilter="delta --color-only --features=interactive";
-        delta.side-by-side=true;
-        delta.navigate=true;
-        merge.conflictstyle="diff3";
+      core.pager = "delta";
+      interactive.difffilter = "delta --color-only --features=interactive";
+      delta.side-by-side = true;
+      delta.navigate = true;
+      merge.conflictstyle = "diff3";
     };
-  };}
+  };
+}

@@ -5,7 +5,7 @@
     inputs.impermanence.nixosModules.impermanence
   ];
 
- networking.networkmanager.enable = true;  
+  networking.networkmanager.enable = true;
 
   environment.persistence."/persist/host" = {
     hideMounts = true;

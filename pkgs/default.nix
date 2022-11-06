@@ -1,7 +1,7 @@
 { nixpkgs ? <nixpkgs>
-, pkgs ? import nixpkgs {}
-, lib ? pkgs.lib  
+, pkgs ? import nixpkgs { }
+, lib ? pkgs.lib
 }: {
 
-  colout = pkgs.python3Packages.callPackage ./colout.nix {};
+  colout = pkgs.python3Packages.callPackage ./colout.nix { };
 }
