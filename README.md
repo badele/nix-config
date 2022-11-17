@@ -1,9 +1,17 @@
 # nix-config
 
 ## TODO 
+- [ ] Fixs
+  - [ ] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget' (via SSH)
+  - [ ] FIX swaylock password authentification
+- [ ] Fonts
+  - [ ] https://erikflowers.github.io/weather-icons/
 - [ ] Sops
-- [ ] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget'
+- kitty
+  - [ ] unmap some keys
+  - [ ] disable exit message
 - [x] nix-index-database
+  - [x] Add cron (@reboot)
 - [x] Configure visual studio code
   - [x] Install treetodo
   - [x] Install run on save
@@ -11,7 +19,13 @@
 - [ ] Hardwares
   - [ ] Dell E5540
     - [ ] push to nixos-hardware
-- [ ] install hyperland
+- [ ] Reduce boot generation list
+- [ ] autologin
+- [ ] ranger
+  - [ ] image support
+- [ ] install sway
+  - [ ] swayidle
+  - [ ] swaylock
 
 ## Second install
 ```

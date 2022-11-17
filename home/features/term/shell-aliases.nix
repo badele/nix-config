@@ -12,7 +12,6 @@
 
     # My tools
     calc_latency = "_calc_latency"; ## Compute approximatively internet latency
-    update_nix_index = "_update_nix_index"; ## update nix-index database from https://github.com/Mic92/nix-index-database project
     toclipboard = "${xclip} -selection clipboard"; ## Copy output to clipboard
     get_i3_window_name = "${xorg.xprop} | grep CLASS";
 
@@ -47,7 +46,7 @@
     sk = "sh -o StrictHostKeyChecking=no"; ## ssh without host verification        
 
     # cat alternative
-    cat = "${bat} --style=plain"; ## cat alternative (bat)
+    cat = "bat --style=plain"; ## cat alternative (bat)
 
     # ls alternative
     la = "exa --color=always -a";

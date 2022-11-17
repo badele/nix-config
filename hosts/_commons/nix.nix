@@ -24,5 +24,15 @@
 
   environment.systemPackages = with pkgs; [
     git
+    nix-index
   ];
+
+  # Enable cron service
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      # update nix-index database from https://github.com/Mic92/nix-index-database project
+      "@reboot      badele    /home/badele/.nix-profile/bin/my-download-nixpkgs-cache-index"
+    ];
+  };
 }

@@ -26,8 +26,8 @@ zstyle ':completion:*' menu select
 bindkey "^R" 		fzf-history-widget ## [CTRL-R] Show FZF histories
 bindkey "^T" 		fzf-file-widget ## [CTRL-T] Show FZF files
 bindkey "^F" 		fzf-cd-widget ## [CTRL-F] Goto FZF selected folder
-bindkey "^J"        fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
-bindkey "^G"        _navi_widget ## [CTRL-G] Show local navi
+bindkey "^J"    fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
+bindkey "^G"    _navi_widget ## [CTRL-G] Show local navi
 
 function fzf-zoxide() {
   eval "ji"
@@ -45,14 +45,6 @@ function _calc_latency() {
 
     RESULT=$(eva "${1}*1000/${FIBER_SPEED}*1000*2") # Meters * lightspeed * 1000 ms * 2 (round trip)
     echo "$RESULT ms"
-}
-
-function _update_nix_index() {
-    filename="index-$(uname -m)-$(uname | tr A-Z a-z)"
-    mkdir -p ~/.cache/nix-index && cd ~/.cache/nix-index
-    # -N will only download a new version if there is an update.
-    wget -q -N https://github.com/Mic92/nix-index-database/releases/latest/download/$filename
-    ln -f $filename files    
 }
 
 ##############################################################################

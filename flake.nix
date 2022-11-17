@@ -5,24 +5,44 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:badele/fork-nixos-hardware/dell-e5540";
     impermanence.url = "github:nix-community/impermanence";
+    nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # i3 wayland alternative
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      inherit (nixpkgs.lib) filterAttrs traceVal;
+      inherit (builtins) mapAttrs elem;
       inherit (self) outputs;
+      notBroken = x: !(x.meta.broken or false);
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     rec {
+      templates = import ./templates;
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+      overlays = import ./overlays;
+
       legacyPackages = forAllSystems (system:
         import nixpkgs {
           inherit system;
+          overlays = with overlays; [ additions wallpapers modifications ];
           config.allowUnfree = true;
-        });
+        }
+      );
 
       packages = forAllSystems
         (system: import ./pkgs { pkgs = legacyPackages.${system}; });
@@ -39,21 +59,21 @@
         # nixbox = nixpkgs.lib.nixosSystem {
         #   pkgs = legacyPackages."x86_64-linux";
         #   specialArgs = { inherit inputs outputs; };
-        #   modules = [ ./system/hosts/nixbox ];
+        #   modules = [ ./hosts/nixbox ];
         # };
 
         # Latitude E5540
         latino = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./system/hosts/latino ];
+          modules = [ ./hosts/latino ];
         };
 
         # Netbook
         # samba = nixpkgs.lib.nixosSystem {
         #   pkgs = legacyPackages."x86_64-linux";
         #   specialArgs = { inherit inputs outputs; };
-        #   modules = [ ./system/hosts/sam ];
+        #   modules = [ ./hosts/sam ];
         # };
       };
 

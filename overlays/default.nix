@@ -15,6 +15,11 @@
           patches = (oldAttrs.patches or [ ])
             ++ [ ./vim-numbertoggle-command-mode.patch ];
         });
+      nvim-treesitter = prev.vimPlugins.nvim-treesitter.overrideAttrs (oldAttrs: {
+        patches = (oldAttrs.patches or [ ]) ++ [
+          ./nvim-treesitter-nix-injection.patch
+        ];
+      });
     } // final.callPackage ../pkgs/vim-plugins { };
 
     tree-sitter-grammars = prev.tree-sitter-grammars // {
@@ -27,11 +32,6 @@
         };
       });
     };
-
-    # Don't launch discord when using discocss
-    discocss = prev.discocss.overrideAttrs (oldAttrs: rec {
-      patches = (oldAttrs.patches or [ ]) ++ [ ./discocss-no-launch.patch ];
-    });
 
     xdg-utils-spawn-terminal = prev.xdg-utils.overrideAttrs (oldAttrs: rec {
       patches = (oldAttrs.patches or [ ]) ++ [ ./xdg-open-spawn-terminal.diff ];
@@ -57,11 +57,6 @@
       };
       # Add term option, rename de to desktop, add scheme option
       patches = (oldAttrs.patches or [ ]) ++ [ ./pfetch.patch ];
-    });
-
-    # Sane default values and crash avoidance (https://github.com/k-vernooy/trekscii/pull/1)
-    trekscii = prev.trekscii.overrideAttrs (oldAttrs: rec {
-      patches = (oldAttrs.patches or [ ]) ++ [ ./trekscii.patch ];
     });
 
     scgit = prev.cgit-pink.overrideAttrs (_oldAttrs: {

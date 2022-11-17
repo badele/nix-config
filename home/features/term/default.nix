@@ -22,15 +22,16 @@
 
   # NOTE: By default all programs enabled for the all shells
   programs = {
-    nix-index = {
-      enable = true;
-    };
+    # command not found and nix-locate
+    nix-index.enable = true;
 
+    # Autojump
     zoxide = {
       enable = true; # Autojump [CTRL-J]
       options = [ "--cmd j" ];
     };
 
+    # FZF
     fzf = {
       enable = true;
       enableZshIntegration = false; ## OMZ
@@ -38,6 +39,7 @@
       historyWidgetOptions = [ "--sort" "--exact" ];
     };
 
+    # Cheats navigators
     navi = {
       enable = true;
       settings = {

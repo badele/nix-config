@@ -5,15 +5,13 @@
 		}
 	],
 	"settings": {
-		"emeraldwalk.runonsave": {
-
-			"commands": [
-				{
-					"match": "\\.nix$",
-					"cmd": "nix-shell -p nixpkgs-fmt --run 'FILE=${file} make fmt-file'"
-				}
-			]
-		},
+		"filewatcher.commands": [
+			{
+				"match": "\\.nix$",
+				"cmd": "nix-shell -p nixpkgs-fmt --run 'cd ${workspaceRoot} ; FILE=\"${file}\" make fmt-file'",
+				"event": "onFileChange"
+			}		
+		],
 		"todo-tree.tree.showBadges": true,
 		"todo-tree.tree.showCountsInTree": true,
 		"todo-tree.general.tags": [
@@ -41,9 +39,9 @@
 		"recommendations": [
 			"aaron-bond.better-comments",
 			"gruntfuggly.todo-tree",
-			"emeraldwalk.runonsave",
 			"eamodio.gitlens",
-			"spmeesseman.vscode-taskexplorer"
+			"spmeesseman.vscode-taskexplorer",
+			"AppulateInc.filewatcher"			
 		]
 	}
 }
