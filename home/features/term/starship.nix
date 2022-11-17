@@ -17,18 +17,20 @@ in
 
     settings = {
       add_newline = true;
+      format = ''$status$username$hostname[](bg:#${colors.base0E} fg:#${colors.base0F})$directory[](bg:#${colors.base0D} fg:#${colors.base0E})$git_branch$git_status[](bg:#${colors.base0C} fg:#${colors.base0D})$cmd_duration[ ](bg:#${colors.base00} fg:#${colors.base0C})'';
       right_format = "[](bg:#${colors.base00} fg:#${colors.base0C})$c$golang[](bg:#${colors.base0C} fg:#${colors.base0B})$docker_context[](bg:#${colors.base0B} fg:#${colors.base0A})$time";
-
-      character = {
-        success_symbol = "[✅](bold green)";
-        error_symbol = "[❌](bold red)";
-      };
-
-      format = ''$username$hostname[](bg:#${colors.base0E} fg:#${colors.base0F})$directory[](bg:#${colors.base0D} fg:#${colors.base0E})$git_branch$git_status[](bg:#${colors.base0C} fg:#${colors.base0D})$cmd_duration[ ](bg:#${colors.base00} fg:#${colors.base0C})'';
       fill = {
         symbol = " ";
         disabled = false;
       };
+
+      status =
+        {
+          style = "bg:#${colors.base07} fg:#${colors.base03}";
+          format = "[$symbol$common_meaning \($status\)$signal_name$maybe_int]($style)[](bg:#${colors.base0F} fg:#${colors.base07})";
+          map_symbol = true;
+          disabled = false;
+        };
 
       username = {
         style_user = "bg:#${colors.base0F}";
