@@ -18,5 +18,12 @@
     enableAllTerminfo = true;
   };
 
+  # Boot limit
+  boot.loader.systemd-boot.configurationLimit = 20;
+
+  # Autologin
+  services.getty.autologinUser = "badele";
+
+
   hardware.enableRedistributableFirmware = true;
 }

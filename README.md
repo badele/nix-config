@@ -19,8 +19,8 @@
 - [ ] Hardwares
   - [ ] Dell E5540
     - [ ] push to nixos-hardware
-- [ ] Reduce boot generation list
-- [ ] autologin
+- [x] Reduce boot generation list
+- [x] autologin
 - [ ] ranger
   - [ ] image support
 - [ ] install sway
@@ -63,6 +63,7 @@ export system=x86_64-linux
 export disk=/dev/disk/by-id/ata-Samsung_SSD_850_EVO_500GB_S2RBNX0K135135M
 export hostname=latino
 export username=badele
+# export buildname="initial installation"
 
 ./bootstrap.sh
 ./deploy.sh
