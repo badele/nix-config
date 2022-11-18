@@ -48,6 +48,9 @@
     }
   ];
 
+  # CPU waybar
+  myconf.nproc = 4;
+
   colorscheme = inputs.nix-colors.colorSchemes.summerfruit-dark;
 
   # https://imgur.com/a/bXDPRpV

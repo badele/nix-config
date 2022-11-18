@@ -3,7 +3,7 @@
 ## TODO 
 - [ ] Fixs
   - [ ] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget' (via SSH)
-  - [ ] FIX swaylock password authentification
+  - [x] FIX swaylock password authentification
 - [ ] Fonts
   - [ ] https://erikflowers.github.io/weather-icons/
 - [ ] Sops
@@ -23,9 +23,10 @@
 - [x] autologin
 - [ ] ranger
   - [ ] image support
-- [ ] install sway
-  - [ ] swayidle
-  - [ ] swaylock
+- [x] install sway
+  - [x] waybar
+  - [x] swayidle
+  - [x] swaylock
 
 ## Second install
 ```

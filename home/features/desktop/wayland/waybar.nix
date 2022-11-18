@@ -293,15 +293,27 @@ in
         # };
 
         cpu =
+          let
+            # show nproc CPU bars
+            icons = lib.concatMapStrings (x: "{icon" + toString x + "} ") (lib.range 0 (config.myconf.nproc - 1));
+          in
           {
-            #format = " {icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7}";
-            format = " {icon0} {icon1} {icon2} {icon3} {usage:>2}%";
+            interval = 1;
+            format = " ${icons} {usage:>2}%";
             format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+            states = {
+              warning = 70;
+              critical = 90;
+            };
           };
 
         memory = {
           format = "  {}%";
           interval = 5;
+          states = {
+            warning = 70;
+            critical = 90;
+          };
         };
 
       };
@@ -367,8 +379,8 @@ in
           }
 
 
-          #clock,
-          #cpu {
+          #clock
+          {
             padding-left: 16px;
             padding-right: 16px;
             border-radius: 10px 0px 0px 10px;
@@ -384,6 +396,15 @@ in
             color: #${colors.base07};
             background: #${colors.base02};
           }        
+
+          #memory.warning {
+            color: #${colors.base09};
+          }          
+
+          #memory.critical {
+            color: #${colors.base08};
+          }          
+
 
           #battery.charging {
               color: #${colors.base07};
@@ -404,6 +425,23 @@ in
               animation-iteration-count: infinite;
               animation-direction: alternate;
           }
+
+          #cpu {
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 10px 0px 0px 10px;
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }          
+
+          #cpu.warning {
+            color: #${colors.base09};
+          }          
+
+          #cpu.critical {
+            color: #${colors.base08};
+          }          
+
 
           #pulseaudio.muted {
             color: #${colors.base08};
