@@ -23,13 +23,11 @@
     kanshi # wayland autorandr alternative
     imv # Images viewer
     mimeo # mimeo / TODO persist configuration ? /home/badele/.config/mimeapps.list
-    pulseaudio
     slurp
     swaylock
-    wev
-    waypipe
-    wl-mirror
-    wl-mirror-pick
+    wev # Show keycode pressed
+    wl-mirror # Output mirror
+    wl-mirror-pick # Output mirror
 
   ];
 

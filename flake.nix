@@ -64,21 +64,21 @@
         # nixbox = nixpkgs.lib.nixosSystem {
         #   pkgs = legacyPackages."x86_64-linux";
         #   specialArgs = { inherit inputs outputs; };
-        #   modules = [ ./hosts/nixbox ];
+        #   modules = [ ./nixos/hosts/nixbox ];
         # };
 
         # Latitude E5540
         latino = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/latino ];
+          modules = [ ./nixos/hosts/latino ];
         };
 
         # Netbook
         # samba = nixpkgs.lib.nixosSystem {
         #   pkgs = legacyPackages."x86_64-linux";
         #   specialArgs = { inherit inputs outputs; };
-        #   modules = [ ./hosts/sam ];
+        #   modules = [ ./nixos/hosts/sam ];
         # };
       };
 

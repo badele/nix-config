@@ -9,12 +9,13 @@
     [
       inputs.hardware.nixosModules.dell-latitude-5520
       ./hardware-configuration.nix
-      ../_commons
+      ../../commons/default
+      ../../commons/optional/audio.nix
       #      ../wm/plasma
 
       # Users
-      ../_users/root.nix
-      ../_users/badele.nix
+      ../../users/root.nix
+      ../../users/badele.nix
     ];
 
   programs = {
@@ -43,9 +44,6 @@
   #   lidSwitch = "suspend";
   #   lidSwitchExternalPower = "lock";
   # };
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
 
   nixpkgs.config.unfree = true;

@@ -27,7 +27,10 @@
 - [ ] Browsers
   - [ ] Firefox + addons
   - [ ] Chrome + addons
+- [ ] audio
+  - [ ] pipewire
 - [x] install sway
+  - [ ] kanshi (multi-screens)
   - [x] mako (notification)
   - [x] waybar
   - [x] swayidle

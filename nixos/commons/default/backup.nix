@@ -49,7 +49,7 @@ in
     compression = "auto,zstd";
     doInit = true;
     startAt = "daily";
-    persistent = true; # run next reboot (if cannot running today)
+    persistentTimer = true; # run next reboot (if cannot running today)
     prune.keep = {
       last = 1;
       within = "3d";
@@ -61,7 +61,7 @@ in
   };
 
   sops.secrets."borgbackup/password" = {
-    sopsFile = ../secrets.yaml;
+    sopsFile = ../../secrets.yaml;
     neededForUsers = true;
   };
 

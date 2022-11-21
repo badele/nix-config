@@ -4,7 +4,7 @@ let
   hosts = outputs.nixosConfigurations;
   hostname = config.networking.hostName;
   prefix = "/persist/host";
-  pubKey = host: ../${host}/ssh_host_ed25519_key.pub;
+  pubKey = host: ../../hosts/${host}/ssh_host_ed25519_key.pub;
 in
 {
   services.openssh = {
