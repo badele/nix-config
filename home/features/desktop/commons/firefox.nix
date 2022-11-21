@@ -9,6 +9,8 @@ in
     extensions = with addons; [
       ublock-origin
       netflix-1080p
+      simple-tab-groups
+      vimium
     ];
     profiles.misterio = {
       bookmarks = { };

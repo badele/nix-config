@@ -26,7 +26,8 @@ zstyle ':completion:*' menu select
 bindkey "^R" 		fzf-history-widget ## [CTRL-R] Show FZF histories
 bindkey "^T" 		fzf-file-widget ## [CTRL-T] Show FZF files
 bindkey "^F" 		fzf-cd-widget ## [CTRL-F] Goto FZF selected folder
-bindkey "^J"    fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
+# TODO: see why kitty block de ^J keybinding
+#bindkey "^J"    fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
 bindkey "^G"    _navi_widget ## [CTRL-G] Show local navi
 
 function fzf-zoxide() {

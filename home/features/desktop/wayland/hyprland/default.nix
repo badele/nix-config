@@ -3,18 +3,9 @@
     inputs.hyprland.homeManagerModules.default
   ];
 
+  # Launch automatically hyprland after autologin
   programs = {
-    fish.loginShellInit = ''
-      if test (tty) = "/dev/tty1"
-        exec Hyprland
-      end
-    '';
     zsh.loginExtra = ''
-      if [ "$(tty)" = "/dev/tty1" ]; then
-        exec Hyprland
-      fi
-    '';
-    zsh.profileExtra = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
         exec Hyprland
       fi
@@ -44,11 +35,6 @@
 
       terminal = "${pkgs.kitty}/bin/kitty";
       terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
-
-      nvim = lib.optionalString
-        config.programs.neovim.enable "${config.programs.neovim.finalPackage}/bin/nvim";
-      emacs = lib.optionalString
-        config.programs.emacs.enable "${config.programs.emacs.finalPackage}/bin/emacsclient -c";
     in
     {
       enable = true;
@@ -131,7 +117,7 @@
         bind=SUPER,Return,exec,${terminal}
         bind=SUPER,w,exec,${makoctl} dismiss
 
-        bind=SUPER,x,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%
+        bind=SUPER,space,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%
         bind=SUPER,d,exec,${wofi} -S run
 
         # Security

@@ -41,7 +41,8 @@
 			"gruntfuggly.todo-tree",
 			"eamodio.gitlens",
 			"spmeesseman.vscode-taskexplorer",
-			"AppulateInc.filewatcher"			
+			"appulateinc.filewatcher",
+			"signageos.signageos-vscode-sops"
 		]
 	}
 }

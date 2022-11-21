@@ -50,10 +50,6 @@ mkdir -p /tmp/nix-config/hosts/${hostname} /mnt/persist/host/etc/ssh
 # ed25519
 test -f /tmp/nix-config/hosts/${hostname}/ssh_host_ed25519_key.pub || ssh-keygen -t ed25519 -N '' -f /mnt/persist/host/etc/ssh/ssh_host_ed25519_key
 test -f /mnt/persist/host/etc/ssh/ssh_host_ed25519_key.pub && mv /mnt/persist/host/etc/ssh/ssh_host_ed25519_key.pub /tmp/nix-config/hosts/${hostname}/
-# rsa 
-# TODO: remove this
-# test -f /tmp/nix-config/hosts/${hostname}/ssh_host_rsa_key.pub || ssh-keygen -b 4096 -N '' -f /mnt/persist/host/etc/ssh/ssh_host_rsa_key
-# test -f /mnt/persist/host/etc/ssh/ssh_host_rsa_key.pub && mv /mnt/persist/host/etc/ssh/ssh_host_rsa_key.pub /tmp/nix-config/hosts/${hostname}/
 
 # Create user ssh key if not exists
 mkdir -p /tmp/nix-config/home/users/${username} /mnt/persist/user/.ssh

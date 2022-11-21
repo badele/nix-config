@@ -42,19 +42,7 @@ in
   ];
 
   programs = {
-
-
-    fish.loginShellInit = ''
-      if test (tty) = "/dev/tty1"
-        exec sway
-      end
-    '';
     zsh.loginExtra = ''
-      if [ "$(tty)" = "/dev/tty1" ]; then
-        exec sway
-      fi
-    '';
-    zsh.profileExtra = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
         exec sway
       fi
@@ -89,7 +77,6 @@ in
 
         # Disable i3status bar
         bars = [ ];
-        menu = "${rofi} -show drun -modi drun";
         modes.resize = {
           Escape = "mode default";
           Return = "mode default";

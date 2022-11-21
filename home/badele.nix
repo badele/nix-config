@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./global
+    ./commons
     ./features/term
     ./features/trusted
     ./features/python

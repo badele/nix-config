@@ -25,7 +25,7 @@ in
     keybindings = {
       "shift+page_up" = "scroll_page_up";
       "shift+page_down" = "scroll_page_down";
-      "^J" = "no_op";
+      #      "^J" = "no_op";
     };
 
     settings = {

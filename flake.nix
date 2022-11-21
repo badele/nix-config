@@ -6,8 +6,14 @@
     hardware.url = "github:badele/fork-nixos-hardware/dell-e5540";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
+
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -16,7 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # i3 wayland alternative
     hyprland.url = "github:hyprwm/Hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
   };
