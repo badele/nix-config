@@ -35,10 +35,6 @@ in
   };
 
   home = {
-    # username = lib.mkDefault "misterio";
-    # homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    # stateVersion = lib.mkDefault "22.05";
-
     persistence = {
       "/persist/user" = {
         directories = [

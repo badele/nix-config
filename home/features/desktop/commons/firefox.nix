@@ -12,7 +12,7 @@ in
       simple-tab-groups
       vimium
     ];
-    profiles.misterio = {
+    profiles.badele = {
       bookmarks = { };
       settings = {
         "browser.startup.homepage" = "https://start.duckduckgo.com";

@@ -50,6 +50,7 @@
 
   # CPU waybar
   myconf.nproc = 4;
+  myconf.gpgid = "00F421C4C5377BA39820E13F6B95E13DE469CC5D";
 
   colorscheme = inputs.nix-colors.colorSchemes.summerfruit-dark;
 
