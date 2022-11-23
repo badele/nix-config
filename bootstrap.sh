@@ -47,14 +47,12 @@ mount -t zfs $hostname/persist/user /mnt/persist/user
 
 # Create host ssh key if not exists
 mkdir -p /tmp/nix-config/hosts/${hostname} /mnt/persist/host/etc/ssh
-# ed25519
 test -f /tmp/nix-config/hosts/${hostname}/ssh_host_ed25519_key.pub || ssh-keygen -t ed25519 -N '' -f /mnt/persist/host/etc/ssh/ssh_host_ed25519_key
 test -f /mnt/persist/host/etc/ssh/ssh_host_ed25519_key.pub && mv /mnt/persist/host/etc/ssh/ssh_host_ed25519_key.pub /tmp/nix-config/hosts/${hostname}/
 
 # Create user ssh key if not exists
 mkdir -p /tmp/nix-config/home/users/${username} /mnt/persist/user/.ssh
-test -f /tmp/nix-config/home/users/${username}/ssh_host_ed25519_key.pub || ssh-keygen -t ed25519 -N '' -f /mnt/persist/user/.ssh/ssh_host_ed25519_key
-test -f /mnt/persist/user/.ssh/ssh_host_ed25519_key.pub && mv /mnt/persist/user/.ssh/ssh_host_ed25519_key.pub /tmp/nix-config/home/users/${username}/
+test -f /mnt/persist/user/.ssh/ssh_host_ed25519_key || ssh-keygen -t ed25519 -N '' -f /mnt/persist/user/.ssh/ssh_host_ed25519_key
 
 # Change permission
 chown -R 1000 /mnt/{data,persist/user}
