@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, home, lib, ... }:
 let
   fetchKey = { url, sha256 ? lib.fakeSha256 }:
     builtins.fetchurl { inherit sha256 url; };
@@ -18,22 +18,17 @@ in
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    sshKeys = [ config.myconf.gpgid ];
+    sshKeys = [ config.myconf.user.gpg.id ];
     pinentryFlavor = pinentry.name;
     enableExtraSocket = true;
   };
 
   programs =
-    let
-      fixGpg = ''
-        gpgconf --launch gpg-agent
-      '';
-    in
     {
       # Start gpg-agent if it's not running or tunneled in
       # SSH does not start it automatically, so this is needed to avoid having to use a gpg command at startup
       # https://www.gnupg.org/faq/whats-new-in-2.1.html#autostart
-      zsh.loginExtra = fixGpg;
+      zsh.loginExtra = "gpgconf --launch gpg-agent";
 
       gpg = {
         enable = true;
@@ -42,18 +37,20 @@ in
         };
         publicKeys = [
           {
-            # TODO: add to myconf (myuserconf)
             source = fetchKey {
-              url = "https://keybase.io/brunoadele/pgp_keys.asc";
-              sha256 = "sha256:1hr53gj98cdvk1jrhczzpaz76cp1xnn8aj23mv2idwy8gcwlpwlg";
+              url = config.myconf.user.gpg.url;
+              sha256 = config.myconf.user.gpg.sha256;
             };
             trust = 5;
           }
         ];
       };
     };
+
   home.persistence = {
-    "/persist/user".directories = [ ".gnupg" ];
+    "/persist/user" = {
+      directories = [ ".gnupg" ];
+    };
   };
 
   # Link /run/user/$UID/gnupg to ~/.gnupg-sockets

@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./_commons
+    ./commons
     ./features/term
   ];
 

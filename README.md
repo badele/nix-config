@@ -1,16 +1,16 @@
 # nix-config
 
 ## TODO 
-- [ ] Fixs
-  - [ ] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget' (via SSH)
+- [x] Fixs
+  - [x] FIX zsh-syntax-highlighting: unhandled ZLE widget '_navi_widget' (via SSH)
   - [x] FIX swaylock password authentification
 - [x] Sops
 - [x] Update GPG key
   - [x] install GPG key on yubikey
-- [ ] backup persistent with borgbackup
+- [x] backup persistent with borgbackup
 - kitty
-  - [ ] unmap some keys
-  - [ ] disable exit message
+  - [x] unmap some keys
+  - [x] disable exit message
 - [x] nix-index-database
   - [x] Add cron (@reboot)
 - [x] Configure visual studio code

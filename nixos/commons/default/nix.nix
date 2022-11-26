@@ -25,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     git
     nix-index
+    gnumake
   ];
 
   # Enable cron service
@@ -35,4 +36,7 @@
       "@reboot      badele    /home/badele/.nix-profile/bin/my-download-nixpkgs-cache-index"
     ];
   };
+
+  hardware.enableRedistributableFirmware = true;
+  nixpkgs.config.unfree = true;
 }

@@ -18,7 +18,7 @@ function check_var() {
 }
 
 # Check variables
-checks="username hostname"
+checks="USERNAME HOSTNAME"
 for check in $checks; do check_var "${check}"; done
 [ $has_error -eq 1 ] && exit 1
 
@@ -26,23 +26,19 @@ for check in $checks; do check_var "${check}"; done
 case $mode in
 
   system)
-    sudo nixos-rebuild switch --flake ".#${hostname}"
+    sudo nixos-rebuild switch --flake ".#${HOSTNAME}"
     ;;
 
   home)
-    home-manager switch --flake ".#${username}_on_${hostname}"
+    home-manager switch --flake ".#${USERNAME}_on_${HOSTNAME}"
     ;;
 
   all)
-    sudo nixos-rebuild switch --flake ".#${hostname}"
-    home-manager switch --flake ".#${username}_on_${hostname}"
+    sudo nixos-rebuild switch --flake ".#${HOSTNAME}"
+    home-manager switch --flake ".#${USERNAME}_on_${HOSTNAME}"
     ;;
 
   *)
     usage
     ;;
 esac
-
-# if [ $1 = "all"]
-# sudo nixos-rebuild switch --flake ".#${hostname}"
-# home-manager switch --flake ".#${username}_on_${hostname}"

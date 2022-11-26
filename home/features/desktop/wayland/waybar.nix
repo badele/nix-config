@@ -295,7 +295,7 @@ in
         cpu =
           let
             # show nproc CPU bars
-            icons = lib.concatMapStrings (x: "{icon" + toString x + "} ") (lib.range 0 (config.myconf.nproc - 1));
+            icons = lib.concatMapStrings (x: "{icon" + toString x + "} ") (lib.range 0 (config.myconf.host.nproc - 1));
           in
           {
             interval = 1;

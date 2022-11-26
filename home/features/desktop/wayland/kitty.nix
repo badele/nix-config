@@ -22,11 +22,10 @@ in
       size = 12;
     };
 
+    # showkey -a
     keybindings = {
       "shift+page_up" = "scroll_page_up";
       "shift+page_down" = "scroll_page_down";
-      # TODO: see why kitty block de ^J keybinding
-      #      "^J" = "no_op";
     };
 
     settings = {

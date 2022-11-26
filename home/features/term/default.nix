@@ -12,12 +12,10 @@
 }: {
 
   imports = [
-    ./shell-aliases.nix
-    ./shell-variables.nix
     ./broot.nix
     ./starship.nix
     ./user-scripts
-    ./zsh
+    ./zsh.nix
   ];
 
   # NOTE: By default all programs enabled for the all shells
@@ -27,7 +25,7 @@
 
     # Autojump
     zoxide = {
-      enable = true; # Autojump [CTRL-J]
+      enable = true;
       options = [ "--cmd j" ];
     };
 

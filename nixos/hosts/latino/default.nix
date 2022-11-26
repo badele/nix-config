@@ -18,12 +18,6 @@
       ../../users/badele.nix
     ];
 
-  programs = {
-    dconf.enable = true;
-  };
-
-  services.dbus.packages = [ pkgs.gcr ];
-
   # xdg.portal = {
   #   enable = true;
   #   wlr.enable = true;
@@ -38,15 +32,19 @@
     opentabletdriver.enable = true;
   };
 
-  programs.light.enable = true;
+  services.dbus.packages = [ pkgs.gcr ];
+
+  programs = {
+    light.enable = true;
+    dconf.enable = true;
+  };
+
 
   # services.logind = {
   #   lidSwitch = "suspend";
   #   lidSwitchExternalPower = "lock";
   # };
 
-
-  nixpkgs.config.unfree = true;
   system.stateVersion = "22.05";
 }
 

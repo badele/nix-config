@@ -9,13 +9,13 @@ in
     inputs.nix-colors.homeManagerModule
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
-  colorscheme = lib.mkDefault colorSchemes.dracula;
-  wallpaper = lib.mkDefault (nixWallpaperFromScheme {
-    scheme = config.colorscheme;
-    width = 2560;
-    height = 1080;
-    logoScale = 4.5;
-  });
+  # colorscheme = lib.mkDefault colorSchemes.dracula;
+  # wallpaper = lib.mkDefault (nixWallpaperFromScheme {
+  #   scheme = config.colorscheme;
+  #   width = 2560;
+  #   height = 1080;
+  #   logoScale = 4.5;
+  # });
 
   home.file.".colorscheme".text = config.colorscheme.slug;
 

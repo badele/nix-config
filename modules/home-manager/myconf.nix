@@ -1,25 +1,41 @@
 { lib, config, ... }:
 
-let
-  inherit (lib) mkOption types;
-in
+with lib;
 {
-
   options.myconf = {
-    # Todo move to host myhostconf
-    nproc = lib.mkOption {
-      type = lib.types.int;
-      description = ''
-        Nb processor cores
-      '';
+    host = {
+      nproc = mkOption {
+        type = types.int;
+        default = 1;
+        description = ''
+          Nb processor cores
+        '';
+      };
     };
 
-    # Todo move to user myuserconf
-    gpgid = lib.mkOption {
-      type = lib.types.str;
-      description = ''
-        Public GPG key
-      '';
+    user = {
+      gpg = {
+        id = mkOption {
+          type = types.str;
+          description = ''
+            Public GPG key
+          '';
+        };
+
+        url = mkOption {
+          type = types.str;
+          default = "";
+          example = "https://keybase.io/username/pgp_keys.asc";
+          description = "Link to the public GPG key";
+        };
+
+        sha256 = mkOption {
+          type = types.str;
+          default = "";
+          example = "sha256:1hr53gj98cdvk1jrhczzpaz76cp1xnn8aj23mv2idwy8gcwlpwlg";
+          description = "The sha256 of the myconf.user.gpg.url content";
+        };
+      };
     };
   };
 }

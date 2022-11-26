@@ -3,7 +3,10 @@
 , ...
 }:
 {
-  imports = [ ./global ./features/term ];
+  imports = [
+    ./global
+    ./features/term
+  ];
 
   programs.git = {
     enable = true;

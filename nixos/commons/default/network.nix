@@ -2,8 +2,9 @@
 {
 
   imports = [
-    inputs.impermanence.nixosModules.impermanence
   ];
+
+  networking.domain = "adele.local";
 
   networking.networkmanager.enable = true;
 

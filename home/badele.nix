@@ -49,8 +49,17 @@
   ];
 
   # CPU waybar
-  myconf.nproc = 4;
-  myconf.gpgid = "00F421C4C5377BA39820E13F6B95E13DE469CC5D";
+  myconf.host = {
+    nproc = 4;
+  };
+
+  myconf.user = {
+    gpg = {
+      id = "00F421C4C5377BA39820E13F6B95E13DE469CC5D";
+      url = "https://keybase.io/username/pgp_keys.asc";
+      sha256 = "sha256:1hr53gj98cdvk1jrhczzpaz76cp1xnn8aj23mv2idwy8gcwlpwlg";
+    };
+  };
 
   colorscheme = inputs.nix-colors.colorSchemes.summerfruit-dark;
 

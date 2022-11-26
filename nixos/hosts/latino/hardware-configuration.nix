@@ -22,38 +22,38 @@
 
   fileSystems."/" =
     {
-      device = "latino/local/root";
+      device = "latino/private/root";
       fsType = "zfs";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/9396-DBCC";
+      device = "/dev/disk/by-label/BOOT";
       fsType = "vfat";
     };
 
   fileSystems."/nix" =
     {
-      device = "latino/local/nix";
+      device = "latino/public/nix";
       fsType = "zfs";
     };
 
   fileSystems."/data" =
     {
-      device = "latino/data";
+      device = "latino/private/data";
       fsType = "zfs";
     };
 
   fileSystems."/persist/host" =
     {
-      device = "latino/persist/host";
+      device = "latino/private/persist/host";
       fsType = "zfs";
       neededForBoot = true;
     };
 
   fileSystems."/persist/user" =
     {
-      device = "latino/persist/user";
+      device = "latino/private/persist/user";
       fsType = "zfs";
       neededForBoot = true;
     };
