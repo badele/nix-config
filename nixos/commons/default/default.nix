@@ -1,10 +1,12 @@
 { config
+, inputs
 , pkgs
 , ...
 }:
 
 {
   imports = [
+    inputs.impermanence.nixosModules.impermanence
     ./autologin.nix
     ./backup.nix
     ./boot.nix
@@ -19,7 +21,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  enableAllTerminfo = true;
   virtualisation.docker.enable = true;
 
   environment = {

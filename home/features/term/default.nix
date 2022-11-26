@@ -68,6 +68,7 @@
 
     # Editor
     neovim
+    vscode
 
     # Colors
     pastel ## Colors generator
