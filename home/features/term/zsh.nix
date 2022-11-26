@@ -275,7 +275,6 @@
         # Private folderss
         WORK = "${config.home.homeDirectory}/work/projects";
         PRIVATE = "${config.home.homeDirectory}/private/projects";
-        PASSWORD_STORE_DIR = "${config.programs.zsh.sessionVariables.PRIVATE}/pass";
 
         # Colors
         GREP_COLORS = "ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36";

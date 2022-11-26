@@ -7,6 +7,8 @@
 - [x] Sops
 - [x] Update GPG key
   - [x] install GPG key on yubikey
+- [x] Add yubikey support  
+- [x] Use pass(passwordstire)
 - [x] backup persistent with borgbackup
 - kitty
   - [x] unmap some keys

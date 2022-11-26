@@ -2,7 +2,9 @@
 
   programs.password-store = {
     enable = true;
-    settings = { PASSWORD_STORE_DIR = "$HOME/.password-store"; };
+    settings = {
+      PASSWORD_STORE_DIR = "$HOME/ghq/github.com/badele/pass";
+    };
     package = pkgs.pass.withExtensions (exts: [ exts.pass-otp ]);
   };
 
