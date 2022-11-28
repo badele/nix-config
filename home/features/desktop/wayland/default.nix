@@ -15,6 +15,7 @@
     swaylock # lockscreen
     swayidle # power off
     xwayland # legacy apps
+    xdg-utils # xdg-open
     waybar # wayland polybar alternative
     wl-clipboard # clipboard
     wofi # rofi alternative

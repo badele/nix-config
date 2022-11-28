@@ -188,9 +188,9 @@
         ".." = "cd ..";
         "..." = "cd ../..";
         "...." = "cd ../../..";
-        cdw = "cd ${config.programs.zsh.sessionVariables.WORK}"; 
-        cdp = "cd ${config.programs.zsh.sessionVariables.PRIVATE}"; 
-        cdn = "cd ~/ghq/github.com/badele/nix-config"; 
+        cdw = "cd ${config.programs.zsh.sessionVariables.WORK}";
+        cdp = "cd ${config.programs.zsh.sessionVariables.PRIVATE}";
+        cdn = "cd ~/ghq/github.com/badele/nix-config";
 
         # git
         gs = "git status"; ## git status
