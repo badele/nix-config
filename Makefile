@@ -38,16 +38,24 @@ mounts: ## Mount or remount all nix volumes
 	@mount -t zfs ${HOSTNAME}/private/persist/host /mnt/persist/host
 	@mount -t zfs ${HOSTNAME}/private/persist/user /mnt/persist/user
 
-install-nixos: ## Install nixos
+##############################################################################
+# NixOS
+##############################################################################
+
+nixos-install: ## Install nixos
 	$(call assert-variable-set,USERNAME)
 	$(call assert-variable-set,HOSTNAME)
 	@nixos-install --no-root-passwd --flake ".#${HOSTNAME}"
 
-update-nixos: ## Update nixos installation
+nixos-update: ## Update nixos installation
 	$(call assert-variable-set,HOSTNAME)
 	@sudo nixos-rebuild switch --flake ".#${HOSTNAME}"
 
-update-home: ## Update home installation
+##############################################################################
+# Home
+##############################################################################
+
+home-update: ## Update home installation
 	$(call assert-variable-set,USERNAME)
 	@home-manager switch --flake ".#${USERNAME}_on_${HOSTNAME}"
 

@@ -68,7 +68,6 @@
 
     # Editor
     neovim
-    vscode
 
     # Colors
     pastel ## Colors generator
@@ -79,6 +78,7 @@
     exa # ls alternative
     fd # find alternative
     httpie # curl alternative
+
     #    procs # top alternative
     bottom # System viewer
     ripgrep # Better grep

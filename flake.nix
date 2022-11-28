@@ -6,6 +6,7 @@
     hardware.url = "github:badele/fork-nixos-hardware/dell-e5540";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,7 +27,7 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
     let
       inherit (nixpkgs.lib) filterAttrs traceVal;
       inherit (builtins) mapAttrs elem;
@@ -96,7 +97,15 @@
         "badele_on_latino" = home-manager.lib.homeManagerConfiguration {
           pkgs = legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home/badele.nix ];
+          modules = [
+            ./home/badele.nix
+            # TODO: Understand this
+            ({ ... }: {
+              nix.registry.nixpkgs.flake = nixpkgs;
+              nixpkgs.overlays = [ nur.overlay ];
+            })
+          ];
+
         };
 
         "root_on_latino" = home-manager.lib.homeManagerConfiguration {

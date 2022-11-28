@@ -39,10 +39,10 @@
 		"recommendations": [
 			"aaron-bond.better-comments",
 			"gruntfuggly.todo-tree",
-			"eamodio.gitlens",
 			"spmeesseman.vscode-taskexplorer",
-			"appulateinc.filewatcher",
-			"signageos.signageos-vscode-sops"
+			"appulate.filewatcher",
+			"signageos.signageos-vscode-sops",
+			"bbenoist.nix",
 		]
 	}
 }

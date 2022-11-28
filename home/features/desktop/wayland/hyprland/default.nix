@@ -48,8 +48,8 @@
           main_mod=SUPER
           gaps_in=5
           gaps_out=10
-          border_size=2.7
-          col.active_border=0xff${colors.base02}
+          border_size=1
+          col.active_border=0xff${colors.base09}
           col.inactive_border=0xff${colors.base01}
           cursor_inactive_timeout=4
         }
@@ -93,7 +93,7 @@
         input {
           kb_layout=fr
           touchpad {
-            disable_while_typing=true
+            #disable_while_typing=true
             natural_scroll=true
             tap-to-click=true
           }
