@@ -1,5 +1,6 @@
 { pkgs, lib, ... }: {
 
+  programs.browserpass.enable = true;
   programs.password-store = {
     enable = true;
     settings = {
