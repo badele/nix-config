@@ -14,7 +14,5 @@
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     unzip
-    vscode
-
   ];
 }

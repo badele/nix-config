@@ -7,6 +7,7 @@
 {
   imports = [
     ./commons
+    ./dev
     ./features/term
     ./features/trusted
     ./features/python
