@@ -17,6 +17,7 @@
       inherit (config.colorscheme) colors;
 
       grimblast = "${inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast}/bin/grimblast";
+      flameshot = "${pkgs.light}/bin/flameshot";
 
       light = "${pkgs.light}/bin/light";
       mako = "${pkgs.mako}/bin/mako";
@@ -26,13 +27,14 @@
       pass-wofi = "${pkgs.pass-wofi}/bin/pass-wofi";
       playerctl = "${pkgs.playerctl}/bin/playerctl";
       playerctld = "${pkgs.playerctl}/bin/playerctld";
-      qutebrowser = "${pkgs.qutebrowser}/bin/qutebrowser";
       swaybg = "${pkgs.swaybg}/bin/swaybg";
       swayidle = "${pkgs.swayidle}/bin/swayidle";
       swaylock = "${pkgs.swaylock-effects}/bin/swaylock";
       systemctl = "${pkgs.systemd}/bin/systemctl";
       wofi = "${pkgs.wofi}/bin/wofi";
 
+      spotify = "${pkgs.spotify}/bin/spotify";
+      firefox = "${pkgs.firefox}/bin/firefox";
       terminal = "${pkgs.kitty}/bin/kitty";
       terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
     in
@@ -99,15 +101,13 @@
           }
         }
 
+        ######################################################################
+        # Bind keys
+        ######################################################################
+
         # Hyprland managment
         bind=SUPER,q,killactive
         bind=SUPERSHIFT,e,exit
-
-        # Startup
-        exec-once=waybar
-        exec=${swaybg} -i ${config.wallpaper} --mode fill
-        exec-once=${mako}
-        exec-once=${swayidle} -w
 
         # Mouse binding
         bindm=SUPER,mouse:272,movewindow
@@ -117,12 +117,20 @@
         bind=SUPER,Return,exec,${terminal}
         bind=SUPER,w,exec,${makoctl} dismiss
 
+        # Screenshots
+        bind=,Print,exec,${grimblast} --notify copysave area
+        bind=SHIFT,Print,exec,${grimblast} --notify copysave active
+        bind=CONTROL,Print,exec,${grimblast} --notify copysave screen
+        bind=SUPER,Print,exec,${grimblast} --notify copysave window
+        bind=ALT,Print,exec,${grimblast} --notify copysave output
+        
         bind=SUPER,space,exec,${wofi} -S drun -x 10 -y 10 -W 25% -H 60%
         bind=SUPER,d,exec,${wofi} -S run
 
         # Security
-        bind=SUPER,p,exec,${pass-wofi}
+        bind=SUPERSHIFT,p,exec,${pass-wofi}
         bind=SUPER,l,exec,${swaylock} -S
+        bind=SUPER,l,exec,${playerctl} play-pause
 
         # Brightness
         bind=,XF86MonBrightnessUp,exec,${light} -A 10
@@ -131,6 +139,7 @@
         # Audio
         bind=,XF86AudioNext,exec,${playerctl} next
         bind=,XF86AudioPrev,exec,${playerctl} previous
+        bind=SUPER,p,exec,${playerctl} play-pause
         bind=,XF86AudioPlay,exec,${playerctl} play-pause
         bind=,XF86AudioStop,exec,${playerctl} stop
         bind=ALT,XF86AudioNext,exec,${playerctld} shift
@@ -210,7 +219,23 @@
         bind=SUPERSHIFT,ccedilla,movetoworkspacesilent,09
         bind=SUPERSHIFT,agrave,movetoworkspacesilent,10
 
-        #blurls=waybar
+        ######################################################################
+        # Launch apps & window rules
+        ######################################################################
+        # Launch
+        exec-once=waybar
+        exec=${swaybg} -i ${config.wallpaper} --mode fill
+        exec-once=${mako}
+        exec-once=${swayidle} -w
+        exec-once=${spotify}
+        exec-once=${firefox}
+
+        # Rules
+        # hyprctl clients
+        windowrule=workspace 3,Discord
+        windowrule=workspace 7,firefox
+        windowrule=workspace 9,codium-url-handler
+        windowrule=float,pavucontrol
       '';
     };
 }

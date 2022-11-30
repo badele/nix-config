@@ -39,7 +39,6 @@ in
         position = "top";
         output = builtins.map (m: m.name) (builtins.filter (m: m.isSecondary == false) config.monitors);
         modules-left = [
-          "custom/menu"
           "custom/currentplayer"
           "custom/player"
         ];
@@ -216,11 +215,9 @@ in
           format-icons = {
             "No players found" = "ﱘ";
             "Celluloid" = "";
-            "spotify" = "阮";
-            "ncspot" = "阮";
-            "qutebrowser" = "爵";
+            "spotify" = "";
+            "firefox" = "";
             "discord" = "ﭮ";
-            "sublimemusic" = "";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
@@ -269,8 +266,8 @@ in
           format = "{icon}";
           on-click = "activate";
           format-icons = {
-            "1" = "1:  TERM";
-            "2" = "2:  MUS";
+            "1" = "1:  MUS";
+            "2" = "2:  TERM";
             "3" = "3:  CHAT";
             "4" = "4:  VIRT";
             "5" = "5:  GFX";
@@ -356,7 +353,6 @@ in
             color: #${colors.base07};
             background: transparent;
             padding: 5px;
-            font-size: 18px;
           }
 
           #workspaces button.active {
@@ -396,6 +392,26 @@ in
             color: #${colors.base07};
             background: #${colors.base02};
           }        
+
+          #custom-currentplayer
+          {
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 10px 0px 0px 10px;
+            font-size: 24px;
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }          
+
+          #custom-player
+          {
+            padding-right: 16px;
+            border-radius: 0px 10px 10px 0px;
+            /*transition: none;*/
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }        
+
 
           #memory.warning {
             color: #${colors.base09};
@@ -457,17 +473,6 @@ in
             background: #${colors.base02};
         }
 
-        #custom-menu {
-          background-color: #${colors.base02};
-          color: #${colors.base04};
-          padding-left: 15px;
-          padding-right: 22px;
-          margin-left: 0;
-          margin-right: 10px;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
         #custom-hostname {
           background-color: #${colors.base02};
           color: #${colors.base05};

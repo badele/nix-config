@@ -22,7 +22,7 @@ in
     timeout ${toString lockTime} '${actionLock}'
   '' +
   # After 10 seconds of locked, mute mic
-  (mkEvent 10 "${pactl} set-source-mute @DEFAULT_SOURCE@ yes" "${pactl} set-source-mute @DEFAULT_SOURCE@ no") +
+  (mkEvent 10 "${pactl} set-sink-mute @DEFAULT_SINK@ yes" "${pactl} set-sink-mute @DEFAULT_SINK@ no") +
   # Hyprland - Turn off screen (DPMS)
   lib.optionalString config.wayland.windowManager.hyprland.enable
     (mkEvent 40 "${hyprctl} dispatch dpms off" "${hyprctl} dispatch dpms on") +

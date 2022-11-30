@@ -24,11 +24,20 @@
     kanshi # wayland autorandr alternative
     imv # Images viewer
     mimeo # mimeo / TODO persist configuration ? /home/badele/.config/mimeapps.list
-    slurp
-    swaylock
+    #flameshot # TODO: Screenshot
+    grim # screenshot
+    slurp # screenshot
     wev # Show keycode pressed
     wl-mirror # Output mirror
     wl-mirror-pick # Output mirror
+
+    # Multimedia
+    mpv # Video player
+    celluloid # mpv frontend
+    cava #vumeter
+
+    # tool
+    inxi # Hardwares info
 
   ];
 
