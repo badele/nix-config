@@ -32,10 +32,13 @@
         version = "1.0.1";
         sha256 = "sha256-qwxqOGublQeVP2qrLF94ndX/Be9oZOn+ZMCFX1yyoH0=";
       }
-
-
+      {
+        name = "signageos-vscode-sops";
+        publisher = "signageos";
+        version = "0.6.1";
+        sha256 = "sha256-fHXiIfc+EXGzR1nl9x87nyKVvLGS1zW6hV5D0CxvUCg=";
+      }
     ];
-
 
     userSettings = {
       "editor.fontFamily" = "'Source Code Pro','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'";

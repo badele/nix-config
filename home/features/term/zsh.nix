@@ -64,14 +64,14 @@
       ];
 
       profileExtra = ''
-        setopt no_beep				                                      # no beep
-        setopt rm_star_wait                 	                          # wait 10 seconds before running `rm *`
-        setopt hist_ignore_dups             	                          # ignore history duplication
-        setopt hist_expire_dups_first       	                          # remove oldest duplicate commands from the history first
-        setopt hist_ignore_space            	                          # don't save commands beginning with spaces to history
-        setopt append_history               	                          # append to the end of the history file
-        setopt inc_append_history           	                          # always be saving history (not just when the shell exits)
-        setopt no_flowcontrol	            	                          # Disable ^S and ^Q (freeze & resume flowcontro)
+        setopt no_beep                                              # no beep
+        setopt rm_star_wait                                             # wait 10 seconds before running `rm *`
+        setopt hist_ignore_dups                                         # ignore history duplication
+        setopt hist_expire_dups_first                                   # remove oldest duplicate commands from the history first
+        setopt hist_ignore_space                                        # don't save commands beginning with spaces to history
+        setopt append_history                                           # append to the end of the history file
+        setopt inc_append_history                                       # always be saving history (not just when the shell exits)
+        setopt no_flowcontrol                                          # Disable ^S and ^Q (freeze & resume flowcontro)
 
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
         zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"       # Colored completion (different colors for dirs/files/etc)
@@ -128,9 +128,9 @@
         zle -N fzf-zoxide
 
         # FZF & Z
-        bindkey "^R" 		fzf-history-widget ## [CTRL-R] Show FZF histories
-        bindkey "^T" 		fzf-file-widget ## [CTRL-T] Show FZF files
-        bindkey "^F" 		fzf-cd-widget ## [CTRL-F] Goto FZF selected folder
+        bindkey "^R"     fzf-history-widget ## [CTRL-R] Show FZF histories
+        bindkey "^T"     fzf-file-widget ## [CTRL-T] Show FZF files
+        bindkey "^F"     fzf-cd-widget ## [CTRL-F] Goto FZF selected folder
         bindkey "^J"    fzf-zoxide ## [CTRL-J] zoxide autojump ZFS list
         bindkey "^G"    _navi_widget ## [CTRL-G] Show local navi
       '';
@@ -263,6 +263,7 @@
 
       sessionVariables = {
 
+        # NixOS experimental support
         NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
 
         PATH = lib.concatStringsSep ":" [

@@ -84,13 +84,6 @@
     ripgrep # Better grep
     jq # JSON pretty printer and manipulator
     sops # Deployment secrets tool
-
-    # Dev
-    act
-    asdf-vm
-    delta
-    ghq
-
   ];
 
 }

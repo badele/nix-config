@@ -8,7 +8,7 @@
   imports = [
     ./commons
     ./development
-    ./programs
+    ./multimedia
     ./features/term
     ./features/trusted
     ./features/python
