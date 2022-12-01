@@ -5,7 +5,9 @@ let
   inherit (config.colorscheme) colors kind;
 
   # Dependencies
-  binpath = "~/.nix-profile/bin";
+  binpath = "~/.nix-profile";
+  statusweather = "${binpath}/bin/status-weather";
+  statuscava = "${binpath}/bin/status-cava";
   jq = "${pkgs.jq}/bin/jq";
   xml = "${pkgs.xmlstarlet}/bin/xml";
   systemctl = "${pkgs.systemd}/bin/systemctl";
@@ -41,6 +43,7 @@ in
         modules-left = [
           "custom/currentplayer"
           "custom/player"
+          "custom/cava"
         ];
         modules-center = [
           "clock"
@@ -70,7 +73,7 @@ in
           format = "{}";
           tooltip = true;
           interval = 1800;
-          exec = "${binpath}/status-weather";
+          exec = "${statusweather}";
           return-type = "json";
         };
 
@@ -203,6 +206,7 @@ in
           };
           format = "力  {}%";
         };
+
         "custom/currentplayer" = {
           interval = 2;
           return-type = "json";
@@ -222,6 +226,7 @@ in
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
         };
+
         "custom/player" = {
           exec-if = "${playerctl} status";
           exec = ''${playerctl} metadata --format '{"text": "{{artist}} - {{title}}", "alt": "{{status}}", "tooltip": "{{title}} ({{artist}} - {{album}})"}' '';
@@ -236,6 +241,13 @@ in
           };
           on-click = "${playerctl} play-pause";
         };
+
+        "custom/cava" = {
+          exec = ''${statuscava}'';
+          return-type = "newline";
+          max-length = 30;
+        };
+
       };
 
       secondary = {
@@ -404,6 +416,15 @@ in
           }          
 
           #custom-player
+          {
+            padding-right: 16px;
+            border-radius: 0px 0px 0px 0px;
+            /*transition: none;*/
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }        
+
+          #custom-cava
           {
             padding-right: 16px;
             border-radius: 0px 10px 10px 0px;
