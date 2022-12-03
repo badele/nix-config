@@ -10,7 +10,7 @@
 - [x] Add yubikey support  
 - [x] Use pass(passwordstire)
 - [x] backup persistent with borgbackup
-- kitty
+- [ ] kitty
   - [x] unmap some keys
   - [x] disable exit message
 - [x] nix-index-database
@@ -24,6 +24,8 @@
     - [ ] push to nixos-hardware
 - [x] Reduce boot generation list
 - [x] autologin
+- [ ] Boot
+  - [ ] plymouth
 - [ ] ranger
   - [ ] image support
 - [ ] Browsers
@@ -31,6 +33,7 @@
   - [ ] Chrome + addons
 - [ ] audio
   - [ ] pipewire
+- [ ] try xonsh 
 - [x] install sway
   - [ ] kanshi (multi-screens)
   - [x] mako (notification)

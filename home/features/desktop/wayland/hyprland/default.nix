@@ -8,6 +8,7 @@
     zsh.loginExtra = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
         exec Hyprland
+        sleep 5
       fi
     '';
   };
@@ -33,10 +34,14 @@
       systemctl = "${pkgs.systemd}/bin/systemctl";
       wofi = "${pkgs.wofi}/bin/wofi";
 
-      spotify = "${pkgs.spotify}/bin/spotify";
-      firefox = "${pkgs.firefox}/bin/firefox";
       terminal = "${pkgs.kitty}/bin/kitty";
-      terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
+      termcmd = class: cmd: "${terminal} --class ${class}} bash -c ${cmd}";
+
+      spotify = "${pkgs.spotify}/bin/spotify";
+      ncspot = "${pkgs.ncspot}/bin/ncspot";
+      firefox = "${pkgs.firefox}/bin/firefox";
+      termcava = termcmd "cava" "cava";
+      termncspot = termcmd "ncspot" "ncspot";
     in
     {
       enable = true;
@@ -153,8 +158,8 @@
 
         # Window managment
         bind=SUPER,s,togglesplit
-        bind=SUPER,f,fullscreen,0
-        bind=SUPERSHIFT,f,fullscreen,1
+        bind=SUPER,f,fullscreen,1
+        bind=SUPERSHIFT,f,fullscreen,0
         bind=SUPERSHIFT,space,togglefloating
 
         # Resize
@@ -227,15 +232,22 @@
         exec=${swaybg} -i ${config.wallpaper} --mode fill
         exec-once=${mako}
         exec-once=${swayidle} -w
-        exec-once=${spotify}
+        exec-once=${termcava}
         exec-once=${firefox}
+        exec-once=${termncspot}
 
-        # Rules
-        # hyprctl clients
-        windowrule=workspace 3,Discord
-        windowrule=workspace 7,firefox
-        windowrule=workspace 9,codium-url-handler
+        # Use `hyprctl clients` cmd for getting window informations
+        # Floating
+        windowrule=float,class:cava
+        windowrule=float,class:ncspot
         windowrule=float,pavucontrol
+
+        # Windows
+        windowrule=workspace 1,class:cava
+        windowrule=workspace 1,class:ncspot
+        windowrule=workspace 3 silent,Discord
+        windowrule=workspace 7 silent,firefox
+        windowrule=workspace 9 silent,codium-url-handler        
       '';
     };
 }

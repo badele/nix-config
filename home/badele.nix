@@ -9,6 +9,7 @@
     ./commons
     ./development
     ./multimedia
+    ./tools
     ./features/term
     ./features/trusted
     ./features/python
@@ -53,6 +54,7 @@
   # CPU waybar
   myconf.host = {
     nproc = 4;
+    coretemp = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input";
   };
 
   myconf.user = {

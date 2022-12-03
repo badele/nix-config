@@ -15,6 +15,7 @@
     ./nix.nix
     ./openssh.nix
     ./security.nix
+    #    ./sensors.nix
     ./sops.nix
   ];
 

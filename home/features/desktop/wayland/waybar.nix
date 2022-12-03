@@ -244,6 +244,7 @@ in
 
         "custom/cava" = {
           exec = ''${statuscava}'';
+          restart-interval = 5;
           return-type = "newline";
           max-length = 30;
         };
@@ -265,8 +266,9 @@ in
         ]);
 
         modules-right = [
-          "cpu"
+          "temperature"
           "custom/gpu"
+          "cpu"
           "memory"
         ];
 
@@ -308,13 +310,20 @@ in
           in
           {
             interval = 1;
-            format = " ${icons} {usage:>2}%";
+            format = "${icons} {usage:>2}%";
             format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
             states = {
               warning = 70;
               critical = 90;
             };
           };
+
+        # see sensors command
+        temperature = {
+          format = "  {temperatureC:>2}°C";
+          hwmon-path = config.myconf.host.coretemp;
+          critical-threshold = 80;
+        };
 
         memory = {
           format = "  {}%";
@@ -434,6 +443,30 @@ in
           }        
 
 
+          #cpu {
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 0px 0px 0px 0px;
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }          
+
+          #cpu.warning {
+            color: #${colors.base09};
+          }          
+
+          #cpu.critical {
+            color: #${colors.base08};
+          }          
+
+          #temperature {
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 10px 0px 0px 10px;
+            color: #${colors.base07};
+            background: #${colors.base02};
+          }          
+
           #memory.warning {
             color: #${colors.base09};
           }          
@@ -462,23 +495,6 @@ in
               animation-iteration-count: infinite;
               animation-direction: alternate;
           }
-
-          #cpu {
-            padding-left: 16px;
-            padding-right: 16px;
-            border-radius: 10px 0px 0px 10px;
-            color: #${colors.base07};
-            background: #${colors.base02};
-          }          
-
-          #cpu.warning {
-            color: #${colors.base09};
-          }          
-
-          #cpu.critical {
-            color: #${colors.base08};
-          }          
-
 
           #pulseaudio.muted {
             color: #${colors.base08};

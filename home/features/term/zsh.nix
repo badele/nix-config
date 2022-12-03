@@ -190,6 +190,7 @@
         "...." = "cd ../../..";
         cdw = "cd ${config.programs.zsh.sessionVariables.WORK}";
         cdp = "cd ${config.programs.zsh.sessionVariables.PRIVATE}";
+        cdg = "cd ~/ghq";
         cdn = "cd ~/ghq/github.com/badele/nix-config";
 
         # git

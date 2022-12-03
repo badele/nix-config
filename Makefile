@@ -4,6 +4,7 @@
 
 # Fix 'No space left on device'
 TMPDIR ?= $(shell mktemp -d -p /data/tmp)
+ACTION ?= switch
 
 # Ensures that a variable is defined and non-empty
 define assert-variable-set
@@ -49,7 +50,8 @@ nixos-install: ## Install nixos
 
 nixos-update: ## Update nixos installation
 	$(call assert-variable-set,HOSTNAME)
-	@sudo nixos-rebuild switch --flake ".#${HOSTNAME}"
+	$(call assert-variable-set,ACTION)
+	@sudo nixos-rebuild -v --show-trace ${ACTION} --flake ".#${HOSTNAME}"
 
 ##############################################################################
 # Home
@@ -57,7 +59,8 @@ nixos-update: ## Update nixos installation
 
 home-update: ## Update home installation
 	$(call assert-variable-set,USERNAME)
-	@home-manager switch --flake ".#${USERNAME}_on_${HOSTNAME}"
+	$(call assert-variable-set,ACTION)
+	@home-manager -v --show-trace ${ACTION} --flake ".#${USERNAME}_on_${HOSTNAME}"
 
 fmt-all: ## Format all .nix files
 	@nix-shell -p nixpkgs-fmt --run 'nixpkgs-fmt .'

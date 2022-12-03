@@ -13,6 +13,7 @@
 
   imports = [
     ./broot.nix
+    # ./cava.nix
     ./starship.nix
     ./user-scripts
     ./zsh.nix
@@ -78,6 +79,7 @@
     exa # ls alternative
     fd # find alternative
     httpie # curl alternative
+    ranger # TUI file manager
 
     #    procs # top alternative
     bottom # System viewer

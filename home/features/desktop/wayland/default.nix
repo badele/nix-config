@@ -16,6 +16,7 @@
     swayidle # power off
     xwayland # legacy apps
     xdg-utils # xdg-open
+    xdg-desktop-portal # native dialog support
     waybar # wayland polybar alternative
     wl-clipboard # clipboard
     wofi # rofi alternative
@@ -35,10 +36,6 @@
     mpv # Video player
     celluloid # mpv frontend
     cava #vumeter
-
-    # tool
-    inxi # Hardwares info
-
   ];
 
   home.sessionVariables = {

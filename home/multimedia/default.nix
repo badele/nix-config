@@ -12,6 +12,7 @@
 
   imports = [
     ./spotify.nix
+    ./obs.nix
   ];
 
   home.packages = with pkgs; [

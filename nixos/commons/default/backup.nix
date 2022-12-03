@@ -15,7 +15,7 @@ let
     systemctl restart borgbackup-job-persist
   '';
 
-  my-persist-restore = pkgs.writeShellScriptBin "my-persist-restore" ''
+  my-persist-list = pkgs.writeShellScriptBin "my-persist-list" ''
     $needroot
     borg list ${repoPersist}
   '';
@@ -25,10 +25,10 @@ let
     name = "my-backup-pesist";
 
     phases = "installPhase fixupPhase";
-    buildInputs = [ my-persist-backup my-persist-restore ];
+    buildInputs = [ my-persist-backup my-persist-list ];
     installPhase = ''
       install -Dm 0755 ${my-persist-backup}/bin//my-persist-backup $out/bin/my-persist-backup    
-      install -Dm 0755 ${my-persist-restore}/bin//my-persist-restore $out/bin/my-persist-restore    
+      install -Dm 0755 ${my-persist-list}/bin//my-persist-list $out/bin/my-persist-list    
     '';
   };
 in

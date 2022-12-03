@@ -9,7 +9,7 @@
   networking.networkmanager.enable = true;
 
   environment.persistence."/persist/host" = {
-    hideMounts = true;
+    # hideMounts = true;
     directories = [
       "/etc/NetworkManager/system-connections"
     ];
